@@ -192,6 +192,17 @@ class StreamingServer(private val messageBroker: MessageBroker) {
         }
     }
 
+    // Start method to start streaming server
+    fun start() {
+        server.start()
+        println("""
+            |🚀Streaming server started on port $PORT
+            |Maximum concurrent streams: $MAX_CONCURRENT_STREAMS
+            |Worker threads: $WORKER_THREADS
+            |Monitoring interval: ${MONITORING_INTERVAL_SECONDS}
+        """.trimIndent())
+    }
+
 }
 
 // gRPC client -> Virtual Threads -> Message buffer -> Coroutine -> Redis
