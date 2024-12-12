@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package org.polarmeet.proto;
+
+option java_multiple_files = true;
+option java_package = "org.polarmeet.grpcdistributedserverudemy";
+option java_outer_classname = "StreamingProto";
+
+// this is going to be a client grpc stream
+// this will send a stream request to server -> server will accept it and sending a response back to the client
+// because this is a stream so client will keep sending data in real time as long as our stream is connected / active
+service StreamingService {
+  rpc StreamData (stream StreamRequest) returns (StreamResponse) {}
+}
+
+message StreamRequest {
+  string client_id = 1;
+  string data = 2;
+  int64 timestamp = 3;
+}
+
+message StreamResponse {
+  bool success = 1;
+  string message = 2;
+  int32 total_messages_processed = 3;
+}

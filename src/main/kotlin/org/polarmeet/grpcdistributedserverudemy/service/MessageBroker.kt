@@ -45,7 +45,9 @@ class MessageBroker(
 // 4. SSE endpoints - individual taps (deliver to end users)
 
 // Flow
+
 // gRPC server -> Redis pubsub -> MessageBroker -> SharedFlow -> SSE Endpoints -> Users
+
 // MutableSharedFlow -> it's always "hot" = it's always running and ready to receive / transmit
 // it can have multiple subscribers
 // SharedFlow is like a pipe system
